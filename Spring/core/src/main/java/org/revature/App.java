@@ -1,11 +1,14 @@
 package org.revature;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
     public static void main(String[] args) {
-        springWithXML();
+//        springWithXML();
+//        springWithJava();
+        springWithAnnotations();
     }
 
     public static void springWithXML(){
@@ -19,4 +22,24 @@ public class App {
         System.out.println(bed);
         System.out.println(bed.getBlanket().getType());
     }
+
+    public static void springWithJava(){
+        ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        Blanket blanket = (Blanket) context.getBean("blanket");
+        System.out.println(blanket.getType());
+        Bed bed = (Bed) context.getBean("bed");
+        System.out.println(bed);
+        System.out.println(bed.getBlanket().getType());
+        System.out.println(blanket == bed.getBlanket());
+    }
+
+    public static void springWithAnnotations(){
+        ApplicationContext context = new AnnotationConfigApplicationContext(AutowireConfig.class);
+        Blanket blanket = (Blanket) context.getBean("blanket");
+        System.out.println(blanket.getType());
+        Bed bed = (Bed) context.getBean("bed");
+        System.out.println(bed);
+        System.out.println(blanket == bed.getBlanket());
+    }
+
 }
