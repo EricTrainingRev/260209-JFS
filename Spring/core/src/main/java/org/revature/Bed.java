@@ -2,6 +2,13 @@ package org.revature;
 
 public class Bed {
 
-    public Blanket blanket;
+    private Blanket blanket;
 
+    public Bed(Blanket blanket) {
+        this.blanket = blanket;
+    }
+
+    public Blanket getBlanket(){
+        return blanket;
+    }
 }

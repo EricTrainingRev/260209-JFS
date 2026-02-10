@@ -5,4 +5,22 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--
+        name -> we can use this to get access to the bean from the application context
+        scope -> tells Spring whether to make our bean a singleton or prototype
+        id -> internal reference to the bean. use this when referencing the bean in your xml
+        class -> the classpath to the class you want Spring to manage
+    -->
+    <bean name="blanket" scope="singleton" id="theDependency" class="org.revature.Blanket">
+        <!--
+            name -> the field you want Spring to provide a value for
+            value -> the data you want Spring to inject into the bean's field
+        -->
+        <property name="type" value="Throw"/>
+    </bean>
+
+    <bean name="bed" scope="singleton" id="bed" class="org.revature.Bed">
+        <constructor-arg name="blanket" ref="theDependency"/>
+    </bean>
+
 </beans>

@@ -28,3 +28,10 @@ means that there will only ever be 1 instance of your managed class that is crea
 Spring will pass it around where it is needed. You can configure Spring to put your
 managed classes in the "prototype" scope, which tells Spring to create a new instance of
 your class whenever it is used
+
+## Dependency Injection
+In order for Spring to provide dependencies to our managed objects (this is called dependency injection, or DI)
+Spring needs to know the methodology to use. Spring has three options for injecting dependencies:
+- field injection: this is equivalent to Spring referencing the field directly and setting the value. It is the least recommended option
+- setter injection: this is the equivalent of Spring using a field's setter method to inject the value
+- constructor injection: this is the equivalent of Spring passing the dependency to the constructor of the bean. Prefer this option when you can (it is the default option) 
