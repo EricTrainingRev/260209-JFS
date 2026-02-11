@@ -1,6 +1,9 @@
 package com.revature.web_demo.controller;
 
 import com.revature.web_demo.entity.Car;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /*
@@ -28,7 +31,48 @@ public class CarController {
     public Car transformCarInformation(@RequestBody Car car){
         car.setColor(car.getColor().toUpperCase());
         car.setMake(car.getMake().toUpperCase());
+        car.setAge(40);
         return car;
     }
+
+    @GetMapping("/{make}")
+    public Car utilizePathParameter(@PathVariable("make") String make){
+        Car car = new Car();
+        if(make.equals("ford")){
+            car.setColor("Blue");
+            car.setMake(make);
+            car.setAge(2);
+        } else {
+            car.setColor("Green");
+            car.setMake(make);
+            car.setAge(12);
+        }
+        return car;
+    }
+
+    @GetMapping("/search")
+    public Car utilizeQueryParameters(@RequestParam String make){
+        Car car = new Car();
+        if(make.equals("ford")){
+            car.setColor("Blue");
+            car.setMake(make);
+            car.setAge(2);
+        } else {
+            car.setColor("Green");
+            car.setMake(make);
+            car.setAge(12);
+        }
+        return car;
+    }
+
+    @PostMapping
+    public ResponseEntity<Car> workingWithResponseEntities(@RequestBody Car car){
+        car.setAge(car.getAge()*2);
+        car.setColor(car.getColor().toUpperCase());
+        car.setMake(car.getMake().toUpperCase());
+        return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).header("custom-header", "custom value").body(car);
+    }
+
+
 
 }
