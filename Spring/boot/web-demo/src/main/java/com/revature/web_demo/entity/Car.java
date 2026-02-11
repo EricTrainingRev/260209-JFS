@@ -1,6 +1,8 @@
 package com.revature.web_demo.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
 /*
@@ -12,8 +14,11 @@ import org.springframework.stereotype.Component;
     - hash
  */
 @Data
+@NoArgsConstructor
 public class Car {
+
     private int age;
+    @NonNull // this tells Lombok the field should not be null
     private String color;
     private String make;
 
