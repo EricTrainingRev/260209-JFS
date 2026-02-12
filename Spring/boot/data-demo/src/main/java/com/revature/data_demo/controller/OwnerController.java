@@ -2,6 +2,7 @@ package com.revature.data_demo.controller;
 
 import com.revature.data_demo.entity.Owner;
 import com.revature.data_demo.repo.OwnerRepo;
+import jakarta.transaction.Transactional;
 import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +49,19 @@ public class OwnerController {
     @GetMapping("/all")
     public List<String> getAllOwnerNamesUppercase(){
         return repo.findAndMakeOwnersUppercase();
+    }
+
+    @PutMapping
+    @Transactional(Transactional.TxType.REQUIRED)
+    public List<Owner> allFailTogether(){
+        Owner ownerOne = new Owner();
+        ownerOne.setName("Sally");
+        Owner ownerTwo = new Owner();
+        ownerTwo.setName("Billy");
+        repo.save(ownerOne);
+        repo.save(ownerTwo);
+        throw new RuntimeException("manually failing route");
+//        return repo.findAll();
     }
 
 }
