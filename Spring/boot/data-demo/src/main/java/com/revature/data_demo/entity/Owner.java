@@ -1,8 +1,10 @@
 package com.revature.data_demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -16,4 +18,14 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
+    /*
+        If you want an entity that owns others to reflect it when it is grabbed
+        from the database (it does not change the table structure). If you set
+        the generic type for the list, that should provide Spring with all
+        the data it needs to grab all owned records when you query records for the
+        given entity
+     */
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    @JsonManagedReference
+    private List<Car> cars;
 }

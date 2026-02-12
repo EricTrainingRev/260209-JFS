@@ -1,8 +1,10 @@
 package com.revature.data_demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.revature.data_demo.utility.Make;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
 
 import java.util.UUID;
 
@@ -11,8 +13,10 @@ import java.util.UUID;
 @Table(name = "cars")
 public class Car {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String color;
+    @Enumerated(EnumType.STRING)
     private Make make;
     /*
         The ManyToOne annotation tells Spring the Car entity has a foreign key
@@ -26,5 +30,6 @@ public class Car {
         making the foreign key relationship for us
      */
     @JoinColumn(name = "owner_id")
+    @JsonBackReference
     private Owner owner;
 }
