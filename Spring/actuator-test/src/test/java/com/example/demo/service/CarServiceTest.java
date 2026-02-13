@@ -14,6 +14,17 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.UUID;
 
+/*
+    When testing the business logic of your application you will typically not need the majority of the Spring
+    resources available in your application. In these situations, when you are trying to perform unit testing we can
+    tell Spring to hand over dependency management to Mockito and have Mockito create a mock dependency. The Mock
+    annotation indicates what resource should be mocked, and the InjectMocks annotation tells Mockito which resource
+    gets the mock objects
+
+    When using the mockito extension Mockito will reset your mock objects inbetween tests, so we do not need to worry
+    about doing this ourselves
+ */
+
 @ExtendWith(MockitoExtension.class)
 public class CarServiceTest {
 

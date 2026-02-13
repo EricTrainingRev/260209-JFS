@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Car;
 import com.example.demo.exception.MissingRequirement;
+import com.example.demo.repo.CarRepo;
 import com.example.demo.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
