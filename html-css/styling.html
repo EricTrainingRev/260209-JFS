@@ -4,6 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Styling</title>
+    <style>
+        /* 
+            When you need to apply batch styling you can use internal styling: to do this you
+            declare a style tag and then put your styling information as content between the
+            opening and closing tags. The format for this is:
+            selector { propertyOne: vale; propertyTwo: value; etc... }
+        */
+        p {
+            text-align: center;
+        }
+
+        /* 
+            All web elements have access to style properties: some of these affect the visuals of
+            the element being rendered, others provide metadata that the browser and other elements
+            can use in order to make your web page functional. These properties, when managed 
+            correctly, can take your webpage and its look to professional heights.
+        */
+
+        /* 
+            Here we are using a class selector to tell the browser we want all elements with the
+            given class assigned to them to have this styling applied. The styling here sets the
+            margin-top style property to 32px, which is double the default value
+        */
+        .margin-top-expanded {
+            margin-top: 32px;
+        }
+
+        /* 
+            If you ever need to target a single element for styling you can always use an
+            Id selector. This tells the browser to apply the styling to whatever element has
+            the given Id attribute. Keep in mind there is no enforcement of unique ids when
+            assigned to elements; if multiple elements have the same id they will all be given
+            the same styling.
+        */
+
+        #set-border {
+            border: 10px ridge green;
+            padding-top: 32px;
+        }
+
+        /* 
+            By default, the text-size property of the html element is set to 16 px. This starting
+            value sets the default for your relative units of measurement. You have two special
+            values for making relative units:
+            em -> similar to the rem unit, this option sets your value relative to the text size of
+                  either the element it is being applied to or to the parent element.
+            rem -> rem is a unit of measurement that works off the text size of the html element. You
+                   can use this option to help scale the size of any styling property you want to have
+                   relative to the text size of the page.
+        */
+        .relative-sizing{
+            font-size: 2rem;
+        }
+
+        /* 
+            You can change the font size of the html element to see the size of the unordered list
+            items change relative to the new font size
+        */
+        html {
+            font-size: 32px;
+        }
+
+        /* 
+            You can also use percentages as a relative unit of measurement. This will be relative
+            to the resource being augmented: for instance, in the example below the elements
+            given the class of halfway will have their width set to half of the viewport
+        */
+        .halfway{
+            width: 50%;
+        }
+
+
+    </style>
+    <link rel="stylesheet" href="styling.css">
 </head>
 <body>
     <!-- 
@@ -23,7 +97,18 @@
             paragraph element. This feature makes it much easier to keep your styling organized and
             makes it easier not to need to repeat your style applications.
         -->
-        <p>This is stored in a div</p>
+        <p id="set-border">This is stored in a div</p>
+        <p class="margin-top-expanded">this is for showing off the box model</p>
     </div>
+
+
+    <ul class="relative-sizing">
+        <li>Dog</li>
+        <li>Cat</li>
+        <li>Fish</li>
+    </ul>
+
+    <p class="halfway">This should only take 50% of its space</p>
+
 </body>
 </html>
