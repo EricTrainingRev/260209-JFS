@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics</title>
+</head>
+<body>
+    <!-- 
+        At the core of all web pages is Hyper Text Markup Language (HTML). Browsers read the HTML
+        of your web page and use the syntax of the page to determine how to render the web page
+        for you. In doing so he browser creates a Document Object Model (DOM) that is a virtual
+        representation of the HTML content of the web page. It is the DOM that is actually rendered
+        and shown to the user, which allows for dynamic web pages to display unique data and media
+        to users without the core page itself being overwritten by everyone trying to access the page
+    -->
+
+    <!-- 
+        When writing your HTML you write tags to represent the web elements that need to be
+        rendered on your page. These tags can have an opening and closing tag like the head and
+        body tags on this page, or they can be self-closing tags, like the meta tags on this
+        page. These tags are read by the browser and then the browser adds the elements that
+        correlate to these tags to the DOM.
+    -->
+
+    <!-- 
+        When adding content to your web page the easiest way to do so is to write out the tags
+        and put any content you want included between the tags (assuming you are working with
+        an opening and closing tag)
+    -->
+    <p>
+        Any text content I want to add to the page can be stored between an opening and closing
+        p tag. This is not the only web element that can store text, but it is a common one.
+    </p>
+
+    <!-- 
+        a self-closing tag example. In this img element we have added some attributes to the
+        element: the src attribute tells the browser where to find the image to display in the
+        img element, the alt attribute tells the browser what text to show if the image 
+        declared in the src attribute is not found (think bad link, new location, etc.). These
+        attributes are a way of augmenting your elements to make them render/work the way you
+        want.
+    -->
+    <img src="https://upload.wikimedia.org/wikippedia/commons/6/6e/Golde33443.jpg" alt="puppy">
+
+    <!-- 
+        Elements fall in to two categories: inline and block elements.
+
+        Block elements get rendered on the page on their own line. What this means is the element
+        will take up all of the width of the viewport when it gets rendered, so if two block
+        elements are declared in your html one after another they will each render on their own
+        "line" of the page.
+
+        Inline elements only take up as much width as they need, so inline elements can be rendered
+        next to each other instead of on separate lines. It is common to see inline elements 
+        declared inside of block elements for grouping purposes
+    -->
+    <p>This is a block element</p>
+    <p>This is another block element</p>
+    <div>
+        <p>
+            this paragraph also has some <span>inline elements</span> that are present
+            in <span>this text</span> paragraph
+        </p>
+    </div>
+
+    <!-- 
+        A versatile element to get comfortable with is the input element: this is the standard
+        element that allows users to provide some input to the webpage; this can be text, numbers, files,
+        dates, colors, etc. No matter what kind of input you want to allow for the user the tag and
+        the attributes you will use to set this up will be consistent
+    -->
+    <input type="text">
+    <input type="number">
+    <input type="color">
+
+</body>
+</html>

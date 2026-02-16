@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styling</title>
+</head>
+<body>
+    <!-- 
+        Cascading Style Sheet (CSS) is the standard way of applying styling to your web pages. The
+        "cascading" part of the name comes from the fact that styling applied to parent elements
+        is applied (when it can be) to child elements. This is also an example of inline styling: this
+        is where you directly within the element via its style attribute set its styling information.
+        This is quick and easy, but should not be done for large applications or when you expect to
+        make revisions in the future due to needing to make adjustments for all places where you have
+        set up inline styling. It is hard to maintain.
+    -->
+    <div style="color:red">
+        <!-- 
+            Note that even though the p element below has no styling directly applied to it when it
+            is rendered in the browser the text is red. This is because the parent element, the div,
+            has the red color styling property assigned to it, which cascades down to the descendant
+            paragraph element. This feature makes it much easier to keep your styling organized and
+            makes it easier not to need to repeat your style applications.
+        -->
+        <p>This is stored in a div</p>
+    </div>
+</body>
+</html>
