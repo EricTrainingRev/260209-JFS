@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            Another way to make your web page more reactive is to use media queries to conditionally
+            style elements on your page based upon the media tool being used. For the example below, 
+            the text of the paragraph element will be colored green when the width of the viewport is 
+            600px or less. You could combine this with a height check to create "mobile" styling
+            for your web page, or something similar
+        */
+        @media (max-width: 600px){
+            p{
+                color:green;
+            }            
+        }
+
+    </style>
+</head>
+<body>
+    <p>This changes color based on the viewport size</p>
+</body>
+</html>

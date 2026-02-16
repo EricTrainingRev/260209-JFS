@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            You can create keyframes anytime you want to set up "animations" using your 
+            styling. In the example below the paragraph element is set up to go from invisible to
+            fully visible over the course of 5 seconds just by using a keyframe.
+        */
+        @keyframes fadeIn{
+            from{
+                opacity: 0%;
+            }
+            to{
+                opacity: 100%;
+            }
+        }
+        p {
+            animation-name: fadeIn;
+            animation-duration: 5s;
+        }
+    </style>
+</head>
+<body>
+    <p>This should fade into view</p>
+</body>
+</html>
