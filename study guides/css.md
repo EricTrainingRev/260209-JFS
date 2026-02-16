@@ -151,7 +151,8 @@ Class and ID selectors are essential tools for targeting specific elements in yo
 
 **Usage:**
 - `.class`: Selects all elements with the specified class attribute.
-- `#id`: Selects the single element with the specified ID attribute.
+- `#id`: Selects all elements with the specified ID attribute.
+	- note: while ids are meant to be unique, this is not enforced
 
 ```css
 .highlight {
