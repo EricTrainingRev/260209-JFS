@@ -75,6 +75,40 @@
             width: 50%;
         }
 
+        /* 
+            Sometimes it is the relationship between your elements that will determine what styling
+            you want to apply to the elements. You can use these relationships between elements
+            without needing to create extra classes for any base styling you want to apply. In
+            the example below all child list item elements of ordered list elements have their
+            color property set to "blueviolet". This can be quicker for setting your baseline
+            styling than creating classes and applying them where needed.
+        */
+
+        ol > li {
+            color: blueviolet;
+        }
+
+        /* 
+            You can use psuedo-classes when you need to conditionally apply styling to an element
+            based on criteria that is determined outside of the DOM. For the example below, the
+            element with the given id has its color property set to "hotpink" when the mouse
+            hovers over it. This has nothing to do with the structure of the dom, it is controlled
+            by the user's mouse movement
+        */
+        #hoverExample:hover {
+            color: hotpink;
+        }
+
+        /* 
+            Similar to psuedo-classes, we can use psudo-elements (note the double colons below) to
+            target specific aspects of the element being affected. In the example below the element
+            with the given id will have the color of the first letter in its text content set to
+            "blueviolet"
+        */
+        #firstCharacter::first-letter{
+            color: blueviolet;
+        }
+
 
     </style>
     <link rel="stylesheet" href="styling.css">
@@ -109,6 +143,15 @@
     </ul>
 
     <p class="halfway">This should only take 50% of its space</p>
+
+    <ol>
+        <li>first</li>
+        <li>second</li>
+        <li>third</li>
+    </ol>
+
+    <p id="hoverExample">hover over me!</p>
+    <p id="firstCharacter">This element is styled with a psuedo-element!</p>
 
 </body>
 </html>
