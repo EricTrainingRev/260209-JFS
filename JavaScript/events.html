@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <main>
+        <div>
+            <button>click me!</button>
+        </div>
+    </main>
+
+</body>
+<script>
+    const mainElement = document.querySelector("main");
+    const divElement = document.querySelector("div");
+    const buttonElement = document.querySelector("button");
+
+    /*
+        To programmatically add events (reactions to actions taken on the page) to your elements
+        you can add event listeners to those elements. When multiple elements trigger the same
+        event the default order of resolution is known as "bubbling". Similar to how bubbles will
+        expand out from an "inner" start point, the most nested element will resolve the event
+        first, then the next level, then the next, etc, until all the events are resolved.
+    */
+   buttonElement.addEventListener("click", (event)=>{
+        alert("button clicked!");
+   }, true);
+   divElement.addEventListener("click", (event)=>{
+        alert("div clicked");
+   }, true)
+   mainElement.addEventListener("click", (event)=>{
+        alert("main clicked");
+   }, true)
+</script>
+</html>

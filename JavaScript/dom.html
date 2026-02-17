@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <style>
+        /* 
+            Any valid non-pseudo selector here is a a valid selector
+            for the querySelector 
+        */
+    </style>
+</head>
+<body>
+    <h1 id="favoritesHeader">These are my favorite foods</h1>
+    <div id="favoritesContainer">
+        <ul id="favoritesList">
+            <li id="favoritesOne">pizza</li>
+            <li id="favoritesTwo">salad</li>
+            <li id="favoritesThree">fajitas</li>
+            <li id="favoritesFour">cookies</li>
+        </ul>
+    </div>
+    <h2>And also favorite pets!</h2>
+    <ul>
+        <li>cats</li>
+        <li>dogs</li>
+        <li>iguanas</li>
+    </ul>
+</body>
+<script>
+    // If you need to interact with a web element via JS targeting it by its id is going to be the
+    // easiest way to access it, if it has an id
+    const header = document.getElementById("favoritesHeader");
+    console.log(header.textContent);
+
+    const listItems = document.getElementsByTagName("li");
+    for(const element of listItems){
+        console.log(element);
+    }
+
+    /*
+        If you have a more specific collection of elements you need to target you can use the
+        querySelector (or querySelectorAll) methods to provide your own selector strategy for
+        locating the elements you need
+    */
+    const foodListItems = document.querySelectorAll('#favoritesList > li');
+    for(const element of foodListItems){
+        console.log(element);
+    }
+
+    /*
+        Once you have access to your elements you can start performing actions on them. 
+    */
+
+    const foodFavoritesList = document.getElementById("favoritesList");
+    // this makes the element, but it has not been added to the DOM yet
+    const burgerListItem = document.createElement("li");
+    burgerListItem.id = "favoritesFive"
+    burgerListItem.textContent = "Burger";
+    // the appendChild method is what actually adds our new li to the DOM
+    foodFavoritesList.appendChild(burgerListItem);
+
+
+
+</script>
+</html>

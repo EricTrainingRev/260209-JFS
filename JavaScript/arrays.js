@@ -6,4 +6,20 @@
     are not trying to call invalid methods or perform invalid actions on the data
 */
 
-const mixedArray = [0, "one", false, {some:'object'}];
+const mixedArray = [0, "one", false, {some:'object', with:"properties"}];
+
+/*
+    When looping through an array you can use an enhanced for-loop to go element by element. Use
+    the "of" keyword when doing this
+*/
+for(const element of mixedArray){
+    console.log(element);
+}
+
+/*
+    Similar to arrays, you can iterate through objects in JavaScript, but instead of using the
+    "of" keyword use the  "in" keyword. This will iterate through the keys of your object
+*/
+for(const key in mixedArray[3]){
+    console.log(key);
+}
