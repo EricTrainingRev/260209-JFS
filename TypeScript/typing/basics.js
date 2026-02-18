@@ -35,7 +35,7 @@ if (typeof couldBeAnything === "string") {
     console.log(couldBeAnything.toUpperCase());
 }
 // note the compiler does not give us an error message here, but the code will fail if run once compiled
-// console.log(couldBeAnything.toUpperCase());
+console.log(couldBeAnything.toUpperCase());
 /*
     If you can't be sure what type or data you are working with but want to keep the strict checking of the TS compiler you can
     use the "unknown" type instead of "any". It works similar to the any type in that any value can be assigned to an unknown variable,
@@ -46,5 +46,33 @@ const unknownValue = 70;
 if (typeof unknownValue === "number") {
     console.log(unknownValue.toLocaleString());
 }
+/*
+    When working with custom data you will often need to store it in Objects. You can specify the structure of your objects and
+    give yourself intellisense for the data you work with by setting your type to match the object structure you are working with. This
+    lets you specify the required properties and types of those properties. If any properties are missing or if they type of the data
+    assigned to the property is different from what you type hint you will get an error
+*/
+const user = {
+    // if we don't have all three properties we will get an error
+    id: 20,
+    username: "somethingCool",
+    password: "true", // if this was a bool type then we would get an error
+    // another: true leaving this off because we will get a typing error if we try and include it
+};
+/*
+    TypeScript provides a system for creating custom types that can help simplify the code you write by letting you define your custom
+    typing needs one time and then referencing that custom typing wherever you need it
+*/
+// this technically works, but we may not want to allow tigers as pets
+let pet = "tiger";
+// we can use a union type to specify the allowed specific values (this can also be general types)
+let specifiedPet = "cat"; // if we put tiger here we will get an error
+let typedPet = "parrot"; // again, if a non-Pet value is provided we will get an error
+let aString = "Some string value";
+let aNumber = 10;
+const newUser = { id: 2, username: "whatever", password: "whatever" };
+const newUser2 = { id: 3, username: "something", password: "secure" };
+let purchaseOrder = ["apple", 5, 1];
+let purchaseOrder2 = ["orange", 2, .75];
 export {};
 //# sourceMappingURL=basics.js.map
