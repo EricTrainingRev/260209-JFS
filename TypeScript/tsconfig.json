@@ -1,0 +1,63 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    // File Layout
+    // "rootDir": "./src",
+    // "outDir": "./dist",
+
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+    /*
+      The module configuration tells the TypeScript compiler the way that we want it to compile
+      our TypeScript code into JavaScript. According to the docs you most likely want "nodenext"
+      if you are building a node app (think a back-end web server) and you most likely want
+      "esnext" if bundling your code (think building a front-end for an app).
+    */
+    "module": "nodenext",
+    /*
+      The target configuration tells the compiler what JavaScript features can be used and which
+      need to have older implementations used instead.
+    */
+    "target": "es6",
+    "types": [],
+    // For nodejs:
+    // "lib": ["esnext"],
+    // "types": ["node"],
+    // and npm install -D @types/node
+
+    // Other Outputs
+    /*
+      sourceMap tells the compiler to generate a .map alongside the JS which can be used by the
+      node debugger to show the steps being executed within the TS file instead of the JS
+    */
+    "sourceMap": true,
+    /*
+      these declaration configurations are for generating files that are useful if publishing
+      your code to a registry like NPM. Any custom data you create that is needed for intellisense
+      gets generated via these configurations.
+    */
+    "declaration": false,
+    "declarationMap": false,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Style Options
+    // "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+
+    // Recommended Options
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+  }
+}

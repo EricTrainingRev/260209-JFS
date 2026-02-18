@@ -1,0 +1,2 @@
+# TS Notes
+TypeScript is a superset of JavaScript: anything that you can do in JavaScript is legal for Typescript, but with TypeScript you get the benefit of a myriad of compile-time checks for your code. Typically these checks are in place to provide type safety and type definition for your code
