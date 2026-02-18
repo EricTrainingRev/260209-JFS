@@ -53,6 +53,8 @@
 
     // Recommended Options
     "strict": true,
+    // if noEmitOnError is set to true no JS files will be compiled if a strict check fails
+    "noEmitOnError": true,
     "jsx": "react-jsx",
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
