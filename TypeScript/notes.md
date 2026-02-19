@@ -139,3 +139,217 @@ type UserWithoutPassword = Omit<User, "password">
 ```ts
 type ScoreBoard = Record<string, number>
 ```
+
+### keyof operator
+- `keyof` is an operator that will produce a union of all property names (keys) from an object type
+
+```ts
+type User = {
+  name: string,
+  age: number
+}
+
+// in this case, UserKeys will contain the key/property names (name | age)
+type UserKeys = keyof User;
+```
+
+#### Use Case
+- Lets TypeScript enforce valid property names
+- In the following snippet, we are guaranteed that the second field will be a valid key of the User object
+```ts
+type UserKeys = keyof User;
+
+function getField(user: User, key: UserKeys) {
+  return user[key];
+}
+```
+
+#### Works with Generics
+- Using Generics as well as keyof operator, we can make functions that guarantee the key exists no matter what the type is 
+```ts
+function printValue<T> (obj: T, key: keyof T) {
+  console.log(obj[key]);
+}
+```
+
+
+### Decorators
+- Syntactically similar to annotations in Java
+  - In Java, annotations can provide information ( ex: @Override annotation to indicate that the method is overriding a parent method)
+  - Especially in Spring and Spring Boot, annotations provide functionality in certain cases (ex: @Component)
+- In TypeScript/Angular, we can apply decorators over classes, methods, properties
+  - These decorators usually apply some functionality
+- Decorators are special functions that can be attached to classes or class members
+```ts
+@DecoratorName
+class MyClass {
+}
+```
+
+#### Enabling Decorators
+- In tsconfig.json
+  - Preferred because we only have to edit the file once
+```json
+{
+  "compilerOptions": {
+    "experimentalDecorators": true
+  }
+}
+```
+- We can also specify the same thing (enable decorators) in the command directly:
+  - tsc .\file-name.ts --experimentalDecorators --target es2016
+
+#### Syntax
+```ts
+// First, we set it up:
+function Logger(target: Function) {
+  console.log("Class/Function Created:", target.name);
+}
+
+// Apply Decorator:
+@Logger
+class User = {}
+```
+- Logging is something that is pretty standard across an application so setting up a decorator is a good idea because:
+  - For each class, we just apply that decorator and the logging functionality is applied
+
+#### Types of Decorators
+
+| Decorator Type | Applies To        |
+| -------------- | ----------------- |
+| Class          | Entire class      |
+| Property       | Class fields      |
+| Method         | Methods           |
+| Accessor       | Getters/setters   |
+| Parameter      | Method parameters |
+
+### Functions
+- In TypeScript, we can define input/output types for our functions
+- Improve type safety as well as provide information to whoever is viewing our code
+
+```ts
+function add(a: number, b: number): number {
+  return a + b;
+}
+```
+
+### as const
+- 'as const" a type assertion that tells TypeScript 
+  - "Treat this value as immutable and as specific as possible"
+- Arrays
+  - ```const nums = [1,2,3]```
+    - The type of this will be number[]
+    - Because we used const, can't change the value
+  - using 'as const'
+    - ```const nums = [1,2,3] as const```
+      - Convert the array into a readonly tuple
+
+### Type Guards
+- Techniques that let TypeScript narrow a variable's type at runtime using checks that the compiler understands
+1. Variable has multiple potential types
+```ts
+let value: string | number
+// we would want some way to verify that this is a string before trying to access the length property
+value.length;
+```
+
+2. Built-in Type Guards
+- typeof - useful for checking types of primitives or custom types
+```ts
+function print(x: string | number) {
+  // check and ensure the object is of type string before trying to invoke
+  // a method that only applies to strings:
+  if(typeof x === 'string') {
+    console.log(x.toUpperCase());
+  }
+}
+```
+- instanceof - useful for checking if an object is an instance of a class
+```ts
+if(obj instanceof User) {
+  obj.printName(); // assuming this method is only available on User class
+}
+```
+
+- in operator - check if a certain property/method exists on an object
+```ts
+// define some types which each include their own specific method
+type Dog = {bark: () => void};
+type Cat = {meow: () => void};
+
+function speak(animal: Cat | Dog) {
+  // at this point, we don't know what the type is between Dog and Cat
+  // So, we ensure that the field is included in the object before trying to use it
+  if('bark' in animal) animal.bark();
+  else if('meow' in animal) animal.meow();
+}
+```
+
+
+### Interfaces vs Types
+- Both are used to describe object shapes
+- Interfaces are extendable and better suited for public APIs
+- Types are more flexible and can represent unions, primitive, etc
+1. Types can be used as aliases for other types including primitives, unions, intersections.
+```ts
+// using type to create a union between 2 types
+type StringOrNumber = string | number;
+// use to make an alias for primitives:
+type ID = number;
+```
+2. Different ways of Extending Functionality
+```ts
+interface User {
+  name: string
+}
+
+interface Admin extends User {
+  role: string
+}
+
+// Admin type now includes fields from User as well
+let admin:Admin = {
+  name: 'darth vader',
+  role: 'sith'
+}
+
+type Movie = {
+  name: string,
+  rating: number
+}
+
+// This horror movie type also includes fields from Movie
+type HorrorMovie = Movie & {
+  numScreams: number
+}
+
+let horrorMovie:HorrorMovie = {
+  name: 'It',
+  rating: 5.0,
+  numScreams: 20
+}
+```
+
+3. Interfaces can be merged together (declaration merging)
+```ts
+interface User {
+  name: string
+}
+interface User {
+  age: number
+}
+
+// Applying this interface User to an object will mandate that the object has both name and age
+```
+
+
+
+### Schedule for rest of day
+- 1:00 EST to 2:00 EST Lunch
+- 2:00-3:00 EST, Rory will be away from call
+  - If anything comes up, can message or email me
+- 2:00-5:00 EST, time for studying, project work
+  - QC tomorrow
+    - Should be able to find the link in chat
+  - From 3:00-5:00 EST, Rory will be back on call to help if anything comes up
+- https://stackoverflow.com/questions/37233735/interfaces-vs-types-in-typescript 
