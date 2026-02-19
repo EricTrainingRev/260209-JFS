@@ -290,6 +290,7 @@ function speak(animal: Cat | Dog) {
 - Both are used to describe object shapes
 - Interfaces are extendable and better suited for public APIs
 - Types are more flexible and can represent unions, primitive, etc
+- https://stackoverflow.com/questions/37233735/interfaces-vs-types-in-typescript
 1. Types can be used as aliases for other types including primitives, unions, intersections.
 ```ts
 // using type to create a union between 2 types
