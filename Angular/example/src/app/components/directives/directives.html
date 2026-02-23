@@ -1,0 +1,19 @@
+<p>directives works!</p>
+<!-- 
+    Angular provides options for dynamically displaying and adding content to your components' html.
+    Directives used to be the way this was accomplished: you would add directive properties to your
+    elements and this would tell Angular how to work with them. The modern way of doing this is
+    through template statements
+-->
+
+<!-- 
+    The code below toggles the value of the conditionalDisplay boolean property. When it is set to
+    true the p element is rendered. When it is false the p element is not rendered. This syntax provides
+    a more familiar way of creating the logic and results of your logical check directly within the
+    html instead of requiring you to programmatically handle the element displaying/hiding within your
+    ts code
+-->
+<button (click)="toggleConditionalDisplay()">Toggle display</button>
+@if (conditionalDisplay) {
+    <p>This should be conditionally rendered</p>
+}

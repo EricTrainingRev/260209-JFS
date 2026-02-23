@@ -4,6 +4,8 @@ import { OutletTwo } from './components/outlet-two/outlet-two';
 import { OutletThree } from './components/outlet-three/outlet-three';
 import { OutletFour } from './components/outlet-four/outlet-four';
 import { OutletFive } from './components/outlet-five/outlet-five';
+import { OutletProtected } from './components/outlet-protected/outlet-protected';
+import { protectedGuard } from './guards/protected-guard';
 
 export const routes: Routes = [
     /*
@@ -20,5 +22,6 @@ export const routes: Routes = [
     {path:"outletThree", component:OutletThree, children:[
         {path:"outletFour", component:OutletFour},
         {path:"outletFive", component:OutletFive}
-    ]}
+    ]},
+    {path:"protected", component:OutletProtected, canActivate:[protectedGuard]}
 ];

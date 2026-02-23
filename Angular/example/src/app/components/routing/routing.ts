@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { Auth } from '../../service/auth';
+import { Directives } from "../directives/directives";
 
 @Component({
   selector: 'app-routing',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Directives],
   templateUrl: './routing.html',
   styleUrl: './routing.css',
 })
@@ -18,7 +20,7 @@ export class Routing {
     In order to actually perform routing (think changing the components that are rendered) we need
     to set some routing configurations in the app.routes.ts file
   */
-  constructor(private router: Router){}
+  constructor(private router: Router, private authService: Auth){}
 
   async displayOutletOne(){
     await this.router.navigate(["outletOne"]);
@@ -30,6 +32,14 @@ export class Routing {
 
   async displayOutletThree(){
     await this.router.navigate(["outletThree"])
+  }
+
+  async displayOutletProtected(){
+    await this.router.navigate(["protected"]);
+  }
+
+  giveAccessToProtectedRoute(){
+    this.authService.giveAccess();
   }
 
 }
