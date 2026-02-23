@@ -24,4 +24,12 @@ export class Routing {
     await this.router.navigate(["outletOne"]);
   }
 
+  async displayOutletTwo(){
+    await this.router.navigate(["outletTwo"])
+  }
+
+  async displayOutletThree(){
+    await this.router.navigate(["outletThree"])
+  }
+
 }
