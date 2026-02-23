@@ -1,0 +1,19 @@
+<!-- 
+    Anytime you want to add data from your component as content for the html you can use interpolation
+    to inject the data. This is typically done for text content on the page: for other data injection
+    there are other options.
+-->
+<p>{{greeting}}</p>
+
+<!-- 
+    Each time we click the button below the count will change its value and the new value will
+    be shown in the view
+-->
+<p>{{count}}</p>
+<!-- 
+    Note that we are increasing the count by using event binding: angular has pre-made ways of
+    interacting with standard web events that allow for you to more dynamically handle them. Any
+    event or attribute of an element wrapped in () represents an event. In the code below we are
+    typing the increaseCount method to the click event on the button
+-->
+<button (click)="increaseCount()">increase count</button>
