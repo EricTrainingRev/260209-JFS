@@ -16,4 +16,45 @@
 <button (click)="toggleConditionalDisplay()">Toggle display</button>
 @if (conditionalDisplay) {
     <p>This should be conditionally rendered</p>
+} @else {
+    <!-- If you need an alternate rendering put it in your else statement -->
+}
+
+<!-- 
+    Anytime you need to create multiple elements you should consider using a for loop in your
+    html. Each resource within the curly brackets for your for loop will be created and added to
+    the view for each iteration of the loop. This is a quick and easy way to generate lists and/or
+    repeat actions in your component without needing to manually write everything out
+
+    In the example below we loop through the loopContent array defined in the component and display
+    each element as text content in a p element. Also, for each p element the index of the loop
+    is added as the id of the element via property binding. In the same way you can connect the code
+    of your component with events via event binding, you can do the same but for element attributes
+    through property binding. Any attributes wrapped in square brackets represents property binding, 
+    and the value of the element is set through whatever method or field or express is written in
+    the string area
+-->
+@for (element of loopContent; track $index) {
+    <p [id]="$index">{{element}}</p>
+}
+
+<!-- 
+
+    Angular also supports switch statements. Note in the example below we are also making use
+    of a pipe: this transforms the data as part of the view (in this case making all the characters
+    uppercase) but it does not mutate the data in place: if we reference switchText in another element
+    it will be whatever value we set it to in the component. Pipes are a great way of augmenting
+    how your data is displayed to the end user
+
+    NOTE: you do not need to worry about your switch/case cascading renderings like switch case
+    works in other languages: in Angular the first case to match is rendered, the others are ignored
+
+-->
+@switch (switchTerm) {
+    @case ("yes") {
+        <p>{{switchText | uppercase }}</p>
+    }
+    @default {
+        <p>This renders if no cases are matched</p>
+    }
 }
