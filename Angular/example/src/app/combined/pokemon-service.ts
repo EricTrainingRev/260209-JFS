@@ -24,7 +24,7 @@ export class PokemonService {
       for (const moveObj of pokemonMoves){
         newMoves.push(moveObj.move.name);
       }
-      this.pokemon.next({name: pokemonName, moves: pokemonMoves});
+      this.pokemon.next({name: pokemonName, moves: newMoves});
       console.log(this.pokemon.getValue())
     });
   }
