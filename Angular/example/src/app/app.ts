@@ -8,6 +8,7 @@ import { Parent } from "./components/parent/parent";
 import { ObservableExample } from "./components/observable-example/observable-example";
 import { SubjectExample } from "./components/subject-example/subject-example";
 import { Http } from "./components/http/http";
+import { PokeParent } from './combined/parent/parent';
 
 /*
   Components are the the core building blocks of all Angular applications. They contain the view data
@@ -21,7 +22,7 @@ import { Http } from "./components/http/http";
 
 @Component({
   selector: 'app-root',
-  imports: [Http],
+  imports: [PokeParent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
