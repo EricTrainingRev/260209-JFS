@@ -1,0 +1,16 @@
+<p>parent works!</p>
+<!-- 
+    When you need to pass data from a parent component to a child component you can use the
+    property binding syntax as seen below to reference the field of the child component you want
+    to provide data for (in square brackets) and then provide the variable/method/expression of
+    the actual data (content between "")
+
+    In order for this to work the child component needs to have the fields that will have data 
+    provided decorated with the @Input decorator
+
+    Similarly, if you want to provide data from the child to the parent you can use event binding to accomplish this. Note that
+    any data provided by the child is accessed through a argument provided by Angular called "$event". Assuming you use a method
+    to handle the event from the child component pass the $event to the method to get access to whatever data the child provides
+-->
+<p>Data from Child component: {{childDataStore}}</p>    
+<app-child [parentDataStore]="parentData" [secondInput]="50+2" (childEvent)="handleChildEvent($event)"></app-child>

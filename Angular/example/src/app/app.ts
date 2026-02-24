@@ -4,6 +4,7 @@ import { FirstComponent } from "./components/first-component/first-component";
 import { SecondComponent } from "./components/second-component/second-component";
 import { Explore } from "./components/explore/explore";
 import { Routing } from "./components/routing/routing";
+import { Parent } from "./components/parent/parent";
 
 /*
   Components are the the core building blocks of all Angular applications. They contain the view data
@@ -17,7 +18,7 @@ import { Routing } from "./components/routing/routing";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FirstComponent, SecondComponent, Explore, Routing],
+  imports: [RouterOutlet, FirstComponent, SecondComponent, Explore, Routing, Parent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

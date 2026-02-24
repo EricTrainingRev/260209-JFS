@@ -1,0 +1,12 @@
+<p>child works!</p>
+<p>Data from parent: {{parentDataStore}}</p>
+<label for="childInput">Data to send to Parent component</label>
+<!-- 
+    Two way data binding can be performed using the ngModel directive provided by the FormsModule 
+    (must be imported). When used any change to the input and any change to the connected field of
+    the component will be reflected in the other. This is a quick and easy way to make sure that
+    your input value and the field representing the input value stay in sync with each other
+-->
+<input type="text" id="childInput" [(ngModel)]="inputValue">
+<button (click)="triggerChildEvent()">send data</button>
+
