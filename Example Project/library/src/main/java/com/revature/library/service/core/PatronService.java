@@ -39,9 +39,10 @@ public class PatronService {
         }
         try{
             System.out.println(token);
-            String id = jwtUtility.extractId(token);
+            String tokenSplit = token.split(" ")[1];
+            String id = jwtUtility.extractId(tokenSplit);
             System.out.println(id);
-            String username = jwtUtility.extractUsername(token);
+            String username = jwtUtility.extractUsername(tokenSplit);
             System.out.println(username);
             Optional<Patron> patron = repo.findById(UUID.fromString(id));
             if(patron.isPresent()){

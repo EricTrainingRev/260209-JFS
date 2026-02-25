@@ -22,6 +22,7 @@ export class UserService {
   login(username: string, password: string){
     this.httpClient.post<{token: string}>("http://localhost:8080/login",{username,password}, {observe:"response"}).subscribe({
       next: response => {
+        console.log(response)
         if(response.status === 200){
           if(!response.body){
             throw new Error("There was a problem logging in, please try again");
@@ -29,7 +30,7 @@ export class UserService {
           this.authToken = response.body.token;
           this.router.navigate(["home"]);
         } else {
-          console.log("Login failed");
+          alert("login failed")
         }
       },
       error: error => console.error(error)
