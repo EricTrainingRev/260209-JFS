@@ -1,0 +1,7 @@
+FROM nginx:stable
+COPY dist/containerize/browser /usr/share/nginx/html
+# This works without specifying the entrypoint or the ports to expose: when we leave this
+# information off in our dockerfile Docker will use whatever specifications were used to build
+# the image in the FROM statement. the nginx:stable image exposes port 80 (default http port)
+# and starts the nginx web server automatically, so all we have to do is copy our build Angular
+# code into the directory nginx looks in for static content for our application to be served
