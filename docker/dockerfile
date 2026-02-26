@@ -1,0 +1,37 @@
+# When building your own image you first need to specify the base image you will work with. This
+# base image provides the starting software/environment your code will be loaded into.
+FROM eclipse-temurin:21-jdk AS build
+# Once the base environment is set we next want to specify the working directory for all subsequent
+# actions. the WORKDIR command lets us specify a directory for all future actions to occur in
+WORKDIR /app 
+# Once the working directory is set we can copy over any files we need to get started building
+# our image. In this case, using . ., I am telling docker to copy over all files from my project
+# into the image environment
+COPY . .
+# Once your files have been copied over you can run any setup scripts or commands needed to make
+# your image functional. In this case the Maven wrapper is made executable and then the package
+# command is run which creates a jar file that can be used to actually run the application
+RUN chmod +x mvnw
+RUN ./mvnw clean package -Dmaven.test.skip=true
+
+# All the steps above are designed to get the software to a state where it can be run. Once this
+# state has been achieved we can design the container space to be optimal for running our software
+
+# To run our application we don't need the JDK, just the JRE, so we can switch over to a new base
+# image that includes the JRE but not the JDK
+FROM eclipse-temurin:21-jre
+# Since we are in a new environment we need to set up our working directory
+WORKDIR /app
+# We now need to get access to the jar file created in the build environment. To specify we are
+# copying from the old image environment we use the from flag and reference our build alias.
+# This time though, we don't need all the files, just the jar, so we can specify that we only
+# want to copy the jar file and then rename it within our image environment to something
+# meaningful for the environment
+COPY --from=build /app/target/*.jar app.jar
+# By default containers built from images will not expose any ports, so as part of the image
+# building process we want to tell docker to expose the port we plan on using so we can actually
+# interact with the software
+EXPOSE 8080
+# We are now ready to run the software, so we need to tell docker what command to run to start
+# the application. This should be an array of words/characters needed to execute our code
+ENTRYPOINT ["java", "-jar", "app.jar"]
