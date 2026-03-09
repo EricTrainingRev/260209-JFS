@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { DashboardContext } from '../useContext/context'
 
 function NavBar() {
+
+  const user = useContext(DashboardContext);
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <h2>{user?.name}</h2>
         <div className="container-fluid">
             <Link className="navbar-brand" to="/">Home</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,6 +26,12 @@ function NavBar() {
                 </li>
                 <li className="nav-item">
                 <Link className="nav-link" to="/hooks">Hooks</Link>
+                </li>
+                <li className="nav-item">
+                <Link className="nav-link" to="/lifting">Lifting State</Link>
+                </li>
+                <li className="nav-item">
+                <Link className="nav-link" to="/context">Use Context</Link>
                 </li>
             </ul>
             </div>

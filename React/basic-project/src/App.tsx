@@ -9,11 +9,20 @@ import ParentComponent from './Components/Props/ParentComponent/ParentComponent'
 import { Route, Routes } from 'react-router-dom'
 import NavBar from './Components/NavBar/NavBar'
 import HooksDemo from './Components/Hooks/HooksDemo'
+import ComponentA from './Components/LiftingState/ComponentA'
+import ContextDemo, { type User } from './Components/useContext/ContextDemo'
+import { DashboardContext } from './Components/useContext/context'
 
 function App() {
 
+    const [user] = useState<User>({
+        isSubscribed: true,
+        name: "Mike"
+    });
   return (
     <>
+    <DashboardContext.Provider value={user}>
+
       <NavBar/>
       <Routes>
         <Route path="/" element={<ComponentOne/>}></Route>
@@ -21,7 +30,10 @@ function App() {
         <Route path="/lists" element={<ListDemo/>}></Route>
         <Route path="/props" element={<ParentComponent/>}></Route>
         <Route path="/hooks" element={<HooksDemo/>}></Route>
+        <Route path="/lifting" element={<ComponentA/>}></Route>
+        <Route path="/context" element={<ContextDemo/>}></Route>
       </Routes>
+    </DashboardContext.Provider>
     </>
   )
 }
