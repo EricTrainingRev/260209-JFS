@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 function HooksDemo() {
+
+    const user = useSelector((state: any) => state.user);
     // let visibility = false;
 
     // let [visibility, setVisibility] = useState(false);
@@ -40,6 +43,10 @@ function HooksDemo() {
 
   return (
     <>
+
+        <h3>USER DATA</h3>
+        <h4>{user.username}</h4>
+        <h4>{user.password}</h4>
         <button onClick={toggleVisibility}>Toggle</button>
 
 

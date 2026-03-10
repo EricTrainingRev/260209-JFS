@@ -12,16 +12,46 @@ import HooksDemo from './Components/Hooks/HooksDemo'
 import ComponentA from './Components/LiftingState/ComponentA'
 import ContextDemo, { type User } from './Components/useContext/ContextDemo'
 import { DashboardContext } from './Components/useContext/context'
+import { useDispatch, useSelector } from 'react-redux'
+import { userActions } from './Redux/slices/userSlice'
 
 function App() {
 
-    const [user] = useState<User>({
+    const [userContext] = useState<User>({
         isSubscribed: true,
         name: "Mike"
     });
+
+    let [state, setState] = useState({
+      username: "",
+      password: ""
+    })
+
+    const user = useSelector((state: any) => state.user);
+
+    // To update a redux state we use dispatch
+    const dispatch = useDispatch();
+
+    function handleSubmit(event: any){
+      event.preventDefault();
+
+      dispatch(userActions.setUser(state))
+    }
+
   return (
     <>
-    <DashboardContext.Provider value={user}>
+
+    <h2>User Information</h2>
+    <h4>{user.username}</h4>
+    <h4>{user.password}</h4>
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder='Username' onChange={(event: any) => setState({...state, username: event.target.value})}></input>
+      <input type="password" placeholder='Password' onChange={(event: any) => setState({...state, password: event.target.value})}></input>
+      <input type="submit"/>
+    </form>
+
+
+    <DashboardContext.Provider value={userContext}>
 
       <NavBar/>
       <Routes>
